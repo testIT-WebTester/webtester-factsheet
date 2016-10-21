@@ -1,0 +1,35 @@
+body {
+    background-color: #efefef;
+    font-family: Monospace;
+    font-size: 20px;
+}
+
+input {
+    border-style: solid;
+    border-color: #666666;
+    border-width: 1px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+label {
+	display: block;
+	margin-bottom: .5em;
+	position: relative;
+}
+
+#loginForm {
+    width: 300px;
+    margin: 25px;
+}
+#username {
+    width: 300px;
+}
+#password {
+    width: 300px;
+}
+#login {
+    background-color: #fefefe;
+    float: right;
+    font-size: 20px;
+}

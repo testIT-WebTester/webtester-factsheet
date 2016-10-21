@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fact Sheet - Error</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/style.css"
+          th:href="@{/css/style.css}"
+          rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div id="error" class="error">
+    <h1>Error</h1>
+    <span id="message" th:text="${error.message}"/>
+</div>
+
+</body>
+</html>

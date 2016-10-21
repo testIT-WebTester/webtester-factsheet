@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fact Sheet - Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/style.css"
+          th:href="@{/css/style.css}"
+          rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<form id="loginForm" action="#" th:action="@{/login}" th:object="${credentials}" method="post">
+    <label for="username">Username: <input id="username" type="text" th:field="*{username}"/></label>
+    <label for="password">Password: <input id="password" type="password" th:field="*{password}"/></label>
+    <p><input id="login" type="submit" value="LOGIN"/></p>
+</form>
+
+</body>
+</html>
