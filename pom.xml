@@ -19,13 +19,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<junit.version>5.0.0-M2</junit.version>
+		<junit5.version>5.0.0-M2</junit5.version>
 		<selenium.version>2.53.1</selenium.version>
 		<webtester.version>${project.version}</webtester.version>
 	</properties>
 
 	<dependencies>
 
+		<!-- NOTE:
+			WebTester does declare most of its dependencies as 'provided'.
+			You need to declare them (e.g. assertj) yourself!
+		-->
+
+		<!-- Code Generation -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -33,6 +39,7 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -44,6 +51,7 @@
 			<version>1.1.5</version>
 		</dependency>
 
+		<!-- Application Framework -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -52,65 +60,99 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
-		<!-- test dependencies -->
-
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Test Runner -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
+			<version>${junit5.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.version}</version>
+			<version>${junit5.version}</version>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-support</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-firefox-driver</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>info.novatec.testit</groupId>
-			<artifactId>webtester-core</artifactId>
-			<version>${webtester.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>info.novatec.testit</groupId>
-			<artifactId>webtester-support-firefox</artifactId>
-			<version>${webtester.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>info.novatec.testit</groupId>
 			<artifactId>webtester-support-junit5</artifactId>
 			<version>${webtester.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Assertions -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>info.novatec.testit</groupId>
 			<artifactId>webtester-support-assertj3</artifactId>
 			<version>${webtester.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Web Driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>${selenium.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>${selenium.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.novatec.testit</groupId>
+			<artifactId>webtester-core</artifactId>
+			<version>${webtester.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.novatec.testit</groupId>
+			<artifactId>webtester-support-firefox</artifactId>
+			<version>${webtester.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- This is needed in order to execute JUnit 5 tests within the build. -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.0.0-M2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<!-- This code is based on a WebTester SNAPSHOT version, so we need the snapshot repository. -->
+			<id>oss-sonatype</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 </project>
