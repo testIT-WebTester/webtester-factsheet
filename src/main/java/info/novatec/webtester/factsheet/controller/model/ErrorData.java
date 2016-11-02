@@ -1,9 +1,15 @@
 package info.novatec.webtester.factsheet.controller.model;
 
-import lombok.Data;
-
-
-@Data
 public class ErrorData {
+
     private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }

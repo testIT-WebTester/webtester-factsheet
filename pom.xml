@@ -31,14 +31,6 @@
 			You need to declare them (e.g. assertj) yourself!
 		-->
 
-		<!-- Code Generation -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.8</version>
-			<optional>true</optional>
-		</dependency>
-
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

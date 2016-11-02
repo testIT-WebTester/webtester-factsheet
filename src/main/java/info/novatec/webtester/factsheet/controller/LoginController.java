@@ -7,14 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import lombok.extern.slf4j.Slf4j;
-
 import info.novatec.webtester.factsheet.controller.exceptions.CredentialsException;
 import info.novatec.webtester.factsheet.controller.model.ErrorData;
 import info.novatec.webtester.factsheet.controller.model.Credentials;
 
 
-@Slf4j
 @Controller
 public class LoginController {
 
