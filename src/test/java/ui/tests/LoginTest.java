@@ -11,7 +11,7 @@ import ui.pages.LoginPage;
 import ui.pages.WelcomePage;
 
 import info.novatec.testit.webtester.browser.Browser;
-import info.novatec.testit.webtester.browser.proxy.FirefoxFactory;
+import info.novatec.testit.webtester.browser.factories.FirefoxFactory;
 import info.novatec.testit.webtester.junit5.EnableWebTesterExtensions;
 import info.novatec.testit.webtester.junit5.extensions.browsers.CreateUsing;
 import info.novatec.testit.webtester.junit5.extensions.browsers.EntryPoint;
